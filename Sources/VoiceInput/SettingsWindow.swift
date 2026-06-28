@@ -1,9 +1,36 @@
 import AppKit
 
+/// NSTextField subclass that enables Edit menu shortcuts (Cmd+C/V/X/A)
+/// even when the app has no main menu (menu-bar-only .accessory apps).
+private final class PasteableTextField: NSTextField {
+    override func performKeyEquivalent(with event: NSEvent) -> Bool {
+        guard event.type == .keyDown,
+              let chars = event.charactersIgnoringModifiers,
+              event.modifierFlags.intersection(.deviceIndependentFlagsMask) == .command
+        else { return super.performKeyEquivalent(with: event) }
+
+        let selString: String?
+        switch chars {
+        case "v": selString = "paste:"
+        case "c": selString = "copy:"
+        case "x": selString = "cut:"
+        case "z": selString = "undo:"
+        case "Z": selString = "redo:"
+        case "a": selString = "selectAll:"
+        default:  return super.performKeyEquivalent(with: event)
+        }
+        let sel = Selector(selString!)
+        if NSApp.sendAction(sel, to: currentEditor() ?? self, from: self) {
+            return true
+        }
+        return super.performKeyEquivalent(with: event)
+    }
+}
+
 final class SettingsWindow: NSPanel {
-    private let apiBaseURLField = NSTextField()
-    private let apiKeyField = NSTextField()
-    private let modelField = NSTextField()
+    private let apiBaseURLField = PasteableTextField()
+    private let apiKeyField = PasteableTextField()
+    private let modelField = PasteableTextField()
     private let statusLabel = NSTextField(labelWithString: "")
 
     init() {

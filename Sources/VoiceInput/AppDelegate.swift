@@ -235,7 +235,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
     private func updateStatusIcon(recording: Bool) {
         guard let button = statusItem.button else { return }
-        let name = recording ? "mic.fill" : "mic"
+        let name = recording ? "waveform.badge.mic" : "waveform"
         button.image = NSImage(systemSymbolName: name, accessibilityDescription: "Voice Input")
         button.contentTintColor = recording ? .systemRed : nil
     }

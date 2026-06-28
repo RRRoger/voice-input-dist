@@ -3,9 +3,22 @@
 <plist version="1.0">
 <dict>
 	<key>files</key>
-	<dict/>
+	<dict>
+		<key>Resources/VoiceInput.icns</key>
+		<data>
+		fTDbbOcnJ4UDwxk+cRoeK63+QEg=
+		</data>
+	</dict>
 	<key>files2</key>
-	<dict/>
+	<dict>
+		<key>Resources/VoiceInput.icns</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			apt1QsvFHTA2OP6A7kHWMd9DzhoGJpZswV95ODUVr5k=
+			</data>
+		</dict>
+	</dict>
 	<key>rules</key>
 	<dict>
 		<key>^Resources/</key>

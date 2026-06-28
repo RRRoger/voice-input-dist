@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:voice-input-dist}",
+            "name": "Debug VoiceInput",
+            "target": "VoiceInput",
+            "configuration": "debug",
+            "preLaunchTask": "swift: Build Debug VoiceInput"
+        },
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:voice-input-dist}",
+            "name": "Release VoiceInput",
+            "target": "VoiceInput",
+            "configuration": "release",
+            "preLaunchTask": "swift: Build Release VoiceInput"
+        }
+    ]
+}
